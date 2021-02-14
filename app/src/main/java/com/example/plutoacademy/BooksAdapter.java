@@ -9,6 +9,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BooksViewHolder> {
@@ -38,9 +40,10 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BooksViewHol
     public void onBindViewHolder(@NonNull BooksViewHolder holder, int position) {
         BooksModel currItem = BooksList.get(position);
 
-        holder.mBookImage.setImageResource(currItem.getBookImage());
-        holder.mRecBook.setText(currItem.getRecBook()+"");
-        holder.mBookName.setText(currItem.getBookName()+"");
+        Picasso.get()
+                .load(currItem.getmBookImage()).into(holder.mBookImage);
+        holder.mRecBook.setText(currItem.getmBookName()+"");
+        holder.mBookName.setText(currItem.getmRecBook()+"");
 
     }
 

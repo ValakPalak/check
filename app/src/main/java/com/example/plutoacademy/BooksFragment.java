@@ -7,9 +7,21 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -53,6 +65,7 @@ public class BooksFragment extends Fragment {
 
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
+    ArrayList<BooksModel> BooksList ;
 //    private RecyclerView.LayoutManager mLayoutManager;
 
     @Override
@@ -69,24 +82,64 @@ public class BooksFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_books, container, false);
+        BooksList = new ArrayList<>();
 
-        ArrayList<BooksModel> BooksList = new ArrayList<>();
-
+        /*BooksList.add(new BooksModel(R.drawable.bookitem, 25, "The Power Of Your Subconscious Mind" ));
         BooksList.add(new BooksModel(R.drawable.bookitem, 25, "The Power Of Your Subconscious Mind" ));
         BooksList.add(new BooksModel(R.drawable.bookitem, 25, "The Power Of Your Subconscious Mind" ));
         BooksList.add(new BooksModel(R.drawable.bookitem, 25, "The Power Of Your Subconscious Mind" ));
         BooksList.add(new BooksModel(R.drawable.bookitem, 25, "The Power Of Your Subconscious Mind" ));
         BooksList.add(new BooksModel(R.drawable.bookitem, 25, "The Power Of Your Subconscious Mind" ));
         BooksList.add(new BooksModel(R.drawable.bookitem, 25, "The Power Of Your Subconscious Mind" ));
-        BooksList.add(new BooksModel(R.drawable.bookitem, 25, "The Power Of Your Subconscious Mind" ));
-
+*/
         mRecyclerView = view.findViewById(R.id.BooksRecyclerView);
         mRecyclerView.setHasFixedSize(true);
+
 //        mLayoutManager = new GridLayoutManager(getActivity());
-        mAdapter = new BooksAdapter(BooksList);
-//        mRecyclerView.setLayoutManager(mLayoutManager);
-        mRecyclerView.setAdapter(mAdapter);
+        getData();
+
         return view;
 
+    }
+
+    private void getData() {
+        RequestQueue requestQueue= Volley.newRequestQueue(getContext());
+        String url="https://plutoacademy.in/api/books/list?page=1";
+        StringRequest stringRequest=new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.d("vipin",response.toString());
+                String image=null;
+                String buy=null;
+                int size=0;
+                try {
+                    JSONObject jsonObject=new JSONObject(response);
+//                    String title=jsonObject.getString("title");
+                    JSONArray jsonArray=jsonObject.getJSONArray("books");
+                    for(int i=0;i<jsonArray.length();i++) {
+                        JSONObject jsonObject1=jsonArray.getJSONObject(i);
+                         image=jsonObject1.getString("mainImage");
+                         buy=jsonObject1.getString("buy");
+                        String title=jsonObject1.getString("title");
+                        JSONArray recommenders=jsonObject1.getJSONArray("recommenders");
+                         size=recommenders.length();
+                        BooksList.add(new BooksModel(image, size, title ));
+
+                    }
+                    mAdapter = new BooksAdapter(BooksList);
+                    mRecyclerView.setAdapter(mAdapter);
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        requestQueue.add(stringRequest);
     }
 }
