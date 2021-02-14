@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/activity_horizontal_margin">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SORT BY"
+        android:textSize="14dp"
+        android:fontFamily="@font/poppins_bold"
+        android:padding="5dp"
+        android:textColor="#242933"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#C7C7C7"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Featured Books"
+        android:textSize="14dp"
+        android:fontFamily="@font/poppins"
+        android:padding="5dp"
+        android:textColor="#0D70D8"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#C7C7C7"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Most Recommended"
+        android:textSize="14dp"
+        android:fontFamily="@font/poppins"
+        android:padding="5dp"
+        android:textColor="#242933"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#C7C7C7"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="BestSelling"
+        android:textSize="14dp"
+        android:fontFamily="@font/poppins"
+        android:padding="5dp"
+        android:textColor="#242933"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#C7C7C7"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Alphabetical: A to Z"
+        android:textSize="14dp"
+        android:fontFamily="@font/poppins"
+        android:padding="5dp"
+        android:textColor="#242933"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#C7C7C7"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Alphabetical: Z to A"
+        android:textSize="14dp"
+        android:fontFamily="@font/poppins"
+        android:padding="5dp"
+        android:textColor="#242933"/>
+
+</LinearLayout>
