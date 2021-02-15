@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -66,6 +67,7 @@ public class BooksFragment extends Fragment {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     ArrayList<BooksModel> BooksList ;
+
 //    private RecyclerView.LayoutManager mLayoutManager;
 
     @Override
@@ -75,6 +77,21 @@ public class BooksFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+//        SearchView searchBooks = null;
+//
+//        searchBooks.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+//
+//            @Override
+//            public boolean onQueryTextSubmit(String query) {
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean onQueryTextChange(String newText) {
+//                return false;
+//            }
+//        });
     }
 
     @Override
@@ -141,6 +158,7 @@ public class BooksFragment extends Fragment {
         });
         requestQueue.add(stringRequest);
     }
+
 
 
     private void getDataOnSearch(String book) {

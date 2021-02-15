@@ -8,54 +8,67 @@
     android:orientation="vertical"
     android:background="#ffffff">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/search_books"
+<!--    <androidx.cardview.widget.CardView-->
+<!--        android:id="@+id/search_books"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_margin="15dp"-->
+<!--        android:layout_marginTop="@dimen/spacing_large"-->
+<!--        android:clipToPadding="false"-->
+<!--        app:cardBackgroundColor="@android:color/white"-->
+<!--        app:cardCornerRadius="3dp"-->
+<!--        app:cardElevation="3dp"-->
+<!--        app:cardUseCompatPadding="false"-->
+<!--        app:layout_collapseMode="parallax">-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:orientation="horizontal">-->
+
+<!--            <ImageButton-->
+<!--                android:id="@+id/bt_menu"-->
+<!--                android:layout_width="?attr/actionBarSize"-->
+<!--                android:layout_height="?attr/actionBarSize"-->
+<!--                android:background="?attr/selectableItemBackgroundBorderless"-->
+<!--                android:tint="#8F8F8F"-->
+<!--                app:srcCompat="@drawable/search" />-->
+
+<!--            <EditText-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_weight="1"-->
+<!--                android:gravity="center_vertical"-->
+<!--                android:hint="Search 'Books'"-->
+<!--                android:fontFamily="@font/poppins"-->
+<!--                android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"-->
+<!--                android:textColor="#8F8F8F" />-->
+
+<!--            <ImageButton-->
+<!--                android:layout_width="?attr/actionBarSize"-->
+<!--                android:layout_height="?attr/actionBarSize"-->
+<!--                android:background="?attr/selectableItemBackgroundBorderless"-->
+<!--                android:tint="#757575"-->
+<!--                app:srcCompat="@drawable/mic" />-->
+
+<!--        </LinearLayout>-->
+
+<!--    </androidx.cardview.widget.CardView>-->
+
+
+    <SearchView
+        android:id="@+id/searchBooks"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:layout_marginTop="@dimen/spacing_large"
-        android:clipToPadding="false"
-        app:cardBackgroundColor="@android:color/white"
-        app:cardCornerRadius="3dp"
-        app:cardElevation="3dp"
-        app:cardUseCompatPadding="false"
-        app:layout_collapseMode="parallax">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <ImageButton
-                android:id="@+id/bt_menu"
-                android:layout_width="?attr/actionBarSize"
-                android:layout_height="?attr/actionBarSize"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:tint="#8F8F8F"
-                app:srcCompat="@drawable/search" />
-
-            <EditText
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center_vertical"
-                android:hint="Search 'Books'"
-                android:fontFamily="@font/poppins"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
-                android:textColor="#8F8F8F" />
-
-            <ImageButton
-                android:layout_width="?attr/actionBarSize"
-                android:layout_height="?attr/actionBarSize"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:tint="#757575"
-                app:srcCompat="@drawable/mic" />
-
-        </LinearLayout>
-
-    </androidx.cardview.widget.CardView>
-
-
+        android:layout_alignParentTop="true"
+        android:iconifiedByDefault="false"
+        android:queryHint="Search Here"
+        android:backgroundTint="#ffffff"
+        android:voiceIcon="@drawable/mic"
+        android:layout_marginTop="10dp"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"/>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -90,8 +103,7 @@
         android:layout_height="match_parent"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:spanCount="2"
-        android:orientation="vertical"/>
-
-
+        android:orientation="vertical"
+        />
 
 </LinearLayout>
