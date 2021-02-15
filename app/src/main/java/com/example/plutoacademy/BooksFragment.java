@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -66,6 +67,7 @@ public class BooksFragment extends Fragment {
 
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
+    SearchView searchView;
     ArrayList<BooksModel> BooksList ;
 
 //    private RecyclerView.LayoutManager mLayoutManager;
@@ -100,6 +102,22 @@ public class BooksFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_books, container, false);
         BooksList = new ArrayList<>();
+        searchView=view.findViewById(R.id.searchBooks);
+
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                BooksList.clear();
+                getDataOnSearch(newText);
+                return false;
+            }
+        });
 
         /*BooksList.add(new BooksModel(R.drawable.bookitem, 25, "The Power Of Your Subconscious Mind" ));
         BooksList.add(new BooksModel(R.drawable.bookitem, 25, "The Power Of Your Subconscious Mind" ));
@@ -114,6 +132,7 @@ public class BooksFragment extends Fragment {
 
 //        mLayoutManager = new GridLayoutManager(getActivity());
         getData();
+
 
         return view;
     }
@@ -137,14 +156,15 @@ public class BooksFragment extends Fragment {
                          image=jsonObject1.getString("mainImage");
                          buy=jsonObject1.getString("buy");
                         String title=jsonObject1.getString("title");
-                        JSONArray recommenders=jsonObject1.getJSONArray("recommenders");
-                         size = recommenders.length();
+                        if(!jsonObject1.isNull("recommenders")) {
+                            JSONArray recommenders = jsonObject1.getJSONArray("recommenders");
+                            size = recommenders.length();
+                        }
                         BooksList.add(new BooksModel(image, size, title));
 
                     }
                     mAdapter = new BooksAdapter(BooksList);
                     mRecyclerView.setAdapter(mAdapter);
-
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -162,11 +182,9 @@ public class BooksFragment extends Fragment {
 
 
     private void getDataOnSearch(String book) {
+        Toast.makeText(getContext(), ""+book, Toast.LENGTH_SHORT).show();
 
         RequestQueue requestQueue= Volley.newRequestQueue(getContext());
-        String searchQuery ="hero";
-
-
         String url="https://plutoacademy.in/api/books/search?val=" + book;
         StringRequest stringRequest=new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
@@ -188,10 +206,11 @@ public class BooksFragment extends Fragment {
                         image=jsonObject1.getString("mainImage");
                         buy=jsonObject1.getString("buy");
                         String title=jsonObject1.getString("title");
-                        JSONArray recommenders=jsonObject1.getJSONArray("recommenders");
-                        size=recommenders.length();
-                        BooksList.add(new BooksModel(image, size, title ));
-
+                        if(!jsonObject1.isNull("recommenders")) {
+                            JSONArray recommenders = jsonObject1.getJSONArray("recommenders");
+                            size = recommenders.length();
+                        }
+                        BooksList.add(new BooksModel(image, size, title));
                     }
                     mAdapter = new BooksAdapter(BooksList);
                     mRecyclerView.setAdapter(mAdapter);
