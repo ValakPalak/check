@@ -32,8 +32,7 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BooksViewHol
     @Override
     public BooksViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.books_item, parent, false);
-        BooksViewHolder Books = new BooksAdapter.BooksViewHolder(v);
-        return Books;
+        return new BooksViewHolder(v);
     }
 
     @Override
@@ -42,8 +41,8 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BooksViewHol
 
         Picasso.get()
                 .load(currItem.getmBookImage()).into(holder.mBookImage);
-        holder.mRecBook.setText(currItem.getmBookName()+"");
-        holder.mBookName.setText(currItem.getmRecBook()+"");
+        holder.mRecBook.setText(currItem.getmRecBook()+"");
+        holder.mBookName.setText(currItem.getmBookName()+"");
 
     }
 
