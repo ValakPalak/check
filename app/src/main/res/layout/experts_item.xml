@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="156dp"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="5dp"
+        android:layout_margin="15dp">
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:orientation="vertical">
+        <ImageView
+            android:id="@+id/ExpertItemImageView"
+            android:layout_width="match_parent"
+            android:layout_height="124dp"
+            android:src="@drawable/bookitem"
+            android:scaleType="fitXY"
+            />
+
+        <TextView
+            android:id="@+id/ExpertName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Azim Premji"
+            android:textColor="#1E1E1E"
+            android:fontFamily="@font/poppins_bold"
+            android:textSize="14dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"/>
+        <TextView
+            android:id="@+id/ExpertType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Businessman"
+            android:textColor="#767676"
+            android:fontFamily="@font/poppins"
+            android:textSize="10dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginBottom="8dp"/>
+    </LinearLayout>
+    </androidx.cardview.widget.CardView>
+

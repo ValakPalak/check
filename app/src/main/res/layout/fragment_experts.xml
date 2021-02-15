@@ -1,14 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ExpertsFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ExpertsFragment"
+    android:orientation="vertical"
+    android:background="#ffffff">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:layout_marginTop="@dimen/spacing_large"
+            android:clipToPadding="false"
+            app:cardBackgroundColor="@android:color/white"
+            app:cardCornerRadius="3dp"
+            app:cardElevation="3dp"
+            app:cardUseCompatPadding="false"
+            app:layout_collapseMode="parallax">
+
+    <!--        <LinearLayout-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="match_parent"-->
+    <!--            android:orientation="horizontal">-->
+
+    <!--            <ImageButton-->
+    <!--                android:id="@+id/bt_menu"-->
+    <!--                android:layout_width="?attr/actionBarSize"-->
+    <!--                android:layout_height="?attr/actionBarSize"-->
+    <!--                android:background="?attr/selectableItemBackgroundBorderless"-->
+    <!--                android:tint="#8F8F8F"-->
+    <!--                app:srcCompat="@drawable/search" />-->
+
+    <!--            <EditText-->
+    <!--                android:layout_width="0dp"-->
+    <!--                android:layout_height="match_parent"-->
+    <!--                android:layout_weight="1"-->
+    <!--                android:gravity="center_vertical"-->
+    <!--                android:hint="Search 'Books'"-->
+    <!--                android:fontFamily="@font/poppins"-->
+    <!--                android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"-->
+    <!--                android:textColor="#8F8F8F" />-->
+
+    <!--            <ImageButton-->
+    <!--                android:layout_width="?attr/actionBarSize"-->
+    <!--                android:layout_height="?attr/actionBarSize"-->
+    <!--                android:background="?attr/selectableItemBackgroundBorderless"-->
+    <!--                android:tint="#757575"-->
+    <!--                app:srcCompat="@drawable/mic" />-->
+
+    <!--        </LinearLayout>-->
+
+    <!--    </androidx.cardview.widget.CardView>-->
+
+
+    <SearchView
+        android:id="@+id/searchExperts"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:iconifiedByDefault="false"
+        android:queryHint="Search 'Experts'"
+        android:backgroundTint="#ffffff"
+        android:voiceIcon="@drawable/mic" />
+        </androidx.cardview.widget.CardView>
+<!--    <View-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="10dp"/>-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_bold"
+            android:text="Recommended Experts"
+            android:textSize="18dp"
+            android:textColor="#000000"
+            android:layout_alignParentLeft="true"/>
+
+        <TextView
+            android:id="@+id/SortExperts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:fontFamily="@font/poppins_semibold"
+            android:gravity="center"
+            android:text="SORT BY"
+            android:textColor="#0D70D8"
+            android:textSize="14dp" />
+
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/ExpertsRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="2"
+        android:orientation="vertical"
+        />
 
-</FrameLayout>
+</LinearLayout>

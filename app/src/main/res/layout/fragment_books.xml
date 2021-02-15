@@ -8,18 +8,18 @@
     android:orientation="vertical"
     android:background="#ffffff">
 
-<!--    <androidx.cardview.widget.CardView-->
-<!--        android:id="@+id/search_books"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_margin="15dp"-->
-<!--        android:layout_marginTop="@dimen/spacing_large"-->
-<!--        android:clipToPadding="false"-->
-<!--        app:cardBackgroundColor="@android:color/white"-->
-<!--        app:cardCornerRadius="3dp"-->
-<!--        app:cardElevation="3dp"-->
-<!--        app:cardUseCompatPadding="false"-->
-<!--        app:layout_collapseMode="parallax">-->
+    <androidx.cardview.widget.CardView
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:layout_marginTop="@dimen/spacing_large"
+        android:clipToPadding="false"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardCornerRadius="3dp"
+        app:cardElevation="3dp"
+        app:cardUseCompatPadding="false"
+        app:layout_collapseMode="parallax">
 
 <!--        <LinearLayout-->
 <!--            android:layout_width="match_parent"-->
@@ -56,19 +56,19 @@
 <!--    </androidx.cardview.widget.CardView>-->
 
 
-    <SearchView
-        android:id="@+id/searchBooks"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:iconifiedByDefault="false"
-        android:queryHint="Search Here"
-        android:backgroundTint="#ffffff"
-        android:voiceIcon="@drawable/mic"
-        android:layout_marginTop="10dp"/>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="10dp"/>
+        <SearchView
+            android:id="@+id/searchBooks"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:backgroundTint="#ffffff"
+            android:iconifiedByDefault="false"
+            android:queryHint="Search 'Books'"
+            android:voiceIcon="@drawable/mic" />
+    </androidx.cardview.widget.CardView>
+<!--    <View-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="10dp"/>-->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -80,20 +80,6 @@ public class BooksFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-//        SearchView searchBooks = null;
-//
-//        searchBooks.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-//
-//            @Override
-//            public boolean onQueryTextSubmit(String query) {
-//                return false;
-//            }
-//
-//            @Override
-//            public boolean onQueryTextChange(String newText) {
-//                return false;
-//            }
-//        });
     }
 
     @Override
@@ -160,6 +146,11 @@ public class BooksFragment extends Fragment {
                             JSONArray recommenders = jsonObject1.getJSONArray("recommenders");
                             size = recommenders.length();
                         }
+                        if(size < 10) size = 10;
+                        else if (size>10 && size <25) size = 10;
+                        else if(size>25 && size<50) size = 25;
+                        else if(size>50 && size<100) size = 25;
+                        else size = 100;
                         BooksList.add(new BooksModel(image, size, title));
 
                     }
