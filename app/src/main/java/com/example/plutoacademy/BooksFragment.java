@@ -99,30 +99,79 @@ public class BooksFragment extends Fragment {
         getData();
 
         return view;
-
     }
 
     private void getData() {
         RequestQueue requestQueue= Volley.newRequestQueue(getContext());
         String url="https://plutoacademy.in/api/books/list?page=1";
-        StringRequest stringRequest=new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Log.d("vipin",response.toString());
-                String image=null;
-                String buy=null;
-                int size=0;
+                Log.d("Hello",response.toString());
+                String image = null;
+                String buy = null;
+                int size = 0;
                 try {
-                    JSONObject jsonObject=new JSONObject(response);
+                    JSONObject jsonObject = new JSONObject(response);
 //                    String title=jsonObject.getString("title");
-                    JSONArray jsonArray=jsonObject.getJSONArray("books");
+                    JSONArray jsonArray = jsonObject.getJSONArray("books");
                     for(int i=0;i<jsonArray.length();i++) {
                         JSONObject jsonObject1=jsonArray.getJSONObject(i);
                          image=jsonObject1.getString("mainImage");
                          buy=jsonObject1.getString("buy");
                         String title=jsonObject1.getString("title");
                         JSONArray recommenders=jsonObject1.getJSONArray("recommenders");
-                         size=recommenders.length();
+                         size = recommenders.length();
+                        BooksList.add(new BooksModel(image, size, title));
+
+                    }
+                    mAdapter = new BooksAdapter(BooksList);
+                    mRecyclerView.setAdapter(mAdapter);
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        requestQueue.add(stringRequest);
+    }
+
+
+    private void getDataOnSearch(String book) {
+
+        RequestQueue requestQueue= Volley.newRequestQueue(getContext());
+        String searchQuery ="hero";
+
+
+        String url="https://plutoacademy.in/api/books/search?val=" + book;
+        StringRequest stringRequest=new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.d("data",response.toString());
+                String image=null;
+
+                String buy=null;
+                int size=0;
+                try {
+                    //TODO: if query parameter not null then this
+                    JSONArray jsonArray = new JSONArray(response);
+
+                    //TODO: if query paramerte is null then this
+                    // JSONObject jsonObject=new JSONObject(response);
+                    //JSONArray jsonArray=jsonObject.getJSONArray("books");
+                    for(int i=0;i<jsonArray.length();i++) {
+                        JSONObject jsonObject1=jsonArray.getJSONObject(i);
+                        image=jsonObject1.getString("mainImage");
+                        buy=jsonObject1.getString("buy");
+                        String title=jsonObject1.getString("title");
+                        JSONArray recommenders=jsonObject1.getJSONArray("recommenders");
+                        size=recommenders.length();
                         BooksList.add(new BooksModel(image, size, title ));
 
                     }

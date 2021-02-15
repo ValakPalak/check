@@ -34,12 +34,12 @@
                 android:tint="#8F8F8F"
                 app:srcCompat="@drawable/search" />
 
-            <TextView
+            <EditText
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center_vertical"
-                android:text="Search 'Books'"
+                android:hint="Search 'Books'"
                 android:fontFamily="@font/poppins"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
                 android:textColor="#8F8F8F" />
