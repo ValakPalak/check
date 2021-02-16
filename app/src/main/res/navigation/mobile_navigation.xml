@@ -24,7 +24,7 @@
         tools:layout="@layout/fragment_experts" />
 
     <fragment
-        android:id="@+id/navigation_about"
+        android:id="@+id/navigation_profile"
         android:name="com.example.plutoacademy.ProfileFragment"
         android:label="@string/title_profile"
         tools:layout="@layout/fragment_profile" />

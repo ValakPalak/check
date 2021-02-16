@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
         // builds navGraph
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_books, R.id.navigation_experts, R.id.navigation_about)
+                R.id.navigation_books, R.id.navigation_experts, R.id.navigation_profile)
                 .build();
         // controls the fragment-to-fragment navigation in activity
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
