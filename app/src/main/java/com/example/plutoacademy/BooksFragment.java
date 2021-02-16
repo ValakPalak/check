@@ -2,6 +2,7 @@ package com.example.plutoacademy;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -38,7 +39,7 @@ import java.util.ArrayList;
  * Use the {@link BooksFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class BooksFragment extends Fragment {
+public class BooksFragment extends Fragment implements  OnItemClick {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -157,7 +158,7 @@ public class BooksFragment extends Fragment {
                         BooksList.add(new BooksModel(image, size, title));
 
                     }
-                    mAdapter = new BooksAdapter(BooksList);
+                    mAdapter = new BooksAdapter(BooksList,BooksFragment.this);
                     mRecyclerView.setAdapter(mAdapter);
                     hideLoadingDialog();
                 } catch (JSONException e) {
@@ -207,7 +208,7 @@ public class BooksFragment extends Fragment {
                         }
                         BooksList.add(new BooksModel(image, size, title));
                     }
-                    mAdapter = new BooksAdapter(BooksList);
+                    mAdapter = new BooksAdapter(BooksList,BooksFragment.this);
                     mRecyclerView.setAdapter(mAdapter);
 
                 } catch (JSONException e) {
@@ -246,5 +247,10 @@ public class BooksFragment extends Fragment {
         if (dialog != null) {
             dialog.dismiss();
         }
+    }
+
+    @Override
+    public void Onclick(int posiiton) {
+    startActivity(new Intent(getContext(),BookDescription.class));
     }
 }

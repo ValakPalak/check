@@ -15,16 +15,29 @@ import java.util.ArrayList;
 
 public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BooksViewHolder> {
     public ArrayList<BooksModel> BooksList;
+    OnItemClick onItemClick;
 
-    public static class BooksViewHolder extends RecyclerView.ViewHolder {
+    public BooksAdapter(ArrayList<BooksModel> booksList, OnItemClick onItemClick) {
+        BooksList = booksList;
+        this.onItemClick = onItemClick;
+    }
+
+    public static class BooksViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public ImageView mBookImage;
         public TextView mRecBook;
         public TextView mBookName;
-        public BooksViewHolder(@NonNull View itemView) {
+        OnItemClick oItemClick;
+        public BooksViewHolder(@NonNull View itemView,OnItemClick ItemClick) {
             super(itemView);
             mBookImage = itemView.findViewById(R.id.BookItemImageView);
             mRecBook = itemView.findViewById(R.id.NoRecBooks);
+            oItemClick=ItemClick;
+            itemView.setOnClickListener(this);
             mBookName = itemView.findViewById(R.id.BookNameTextView);
+        }
+        @Override
+        public void onClick(View v) {
+            oItemClick.Onclick(getAdapterPosition());
         }
     }
 
@@ -32,7 +45,7 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BooksViewHol
     @Override
     public BooksViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.books_item, parent, false);
-        return new BooksViewHolder(v);
+        return new BooksViewHolder(v,onItemClick);
     }
 
     @Override
@@ -54,5 +67,6 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BooksViewHol
     public BooksAdapter(ArrayList<BooksModel> BooksList){
         this.BooksList = BooksList;
     }
+
 
 }
