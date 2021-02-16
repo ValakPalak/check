@@ -133,7 +133,7 @@ public class ExpertsFragment extends Fragment {
                     for(int i=0;i<jsonArray.length();i++) {
                         JSONObject jsonObject1=jsonArray.getJSONObject(i);
                         image=jsonObject1.getString("mainImage");
-                        slug=jsonObject1.getString("slug");
+                        //slug=jsonObject1.getString("slug");
                         String name=jsonObject1.getString("name");
                         designation=jsonObject1.getString("designation");
                         ExpertsList.add(new ExpertsModel(image, name, designation));
@@ -177,7 +177,7 @@ public class ExpertsFragment extends Fragment {
                     for(int i=0;i<jsonArray.length();i++) {
                         JSONObject jsonObject1=jsonArray.getJSONObject(i);
                         image=jsonObject1.getString("mainImage");
-                        slug=jsonObject1.getString("slug");
+                        //slug=jsonObject1.getString("slug");
                         String name=jsonObject1.getString("name");
                         designation=jsonObject1.getString("designation");
                         ExpertsList.add(new ExpertsModel(image, name, designation));
