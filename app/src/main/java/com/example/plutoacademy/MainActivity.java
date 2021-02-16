@@ -6,8 +6,16 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import android.app.Dialog;
+import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import android.view.Window;
 
+import com.example.plutoacademy.databinding.LoadingdialogBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.Objects;
@@ -35,5 +43,8 @@ public class MainActivity extends AppCompatActivity {
         // set the UI
         NavigationUI.setupWithNavController(navView, navController);
     }
+
+
+
 
 }

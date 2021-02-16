@@ -1,5 +1,9 @@
 package com.example.plutoacademy;
 
+import android.app.Dialog;
+import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -11,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.SearchView;
 import android.widget.Toast;
 
@@ -20,6 +25,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.plutoacademy.databinding.LoadingdialogBinding;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -69,6 +75,7 @@ public class BooksFragment extends Fragment {
     private RecyclerView.Adapter mAdapter;
     SearchView searchView;
     ArrayList<BooksModel> BooksList ;
+    Dialog dialog;
 
 //    private RecyclerView.LayoutManager mLayoutManager;
 
@@ -107,11 +114,6 @@ public class BooksFragment extends Fragment {
 
         /*BooksList.add(new BooksModel(R.drawable.bookitem, 25, "The Power Of Your Subconscious Mind" ));
         BooksList.add(new BooksModel(R.drawable.bookitem, 25, "The Power Of Your Subconscious Mind" ));
-        BooksList.add(new BooksModel(R.drawable.bookitem, 25, "The Power Of Your Subconscious Mind" ));
-        BooksList.add(new BooksModel(R.drawable.bookitem, 25, "The Power Of Your Subconscious Mind" ));
-        BooksList.add(new BooksModel(R.drawable.bookitem, 25, "The Power Of Your Subconscious Mind" ));
-        BooksList.add(new BooksModel(R.drawable.bookitem, 25, "The Power Of Your Subconscious Mind" ));
-        BooksList.add(new BooksModel(R.drawable.bookitem, 25, "The Power Of Your Subconscious Mind" ));
 */
         mRecyclerView = view.findViewById(R.id.BooksRecyclerView);
         mRecyclerView.setHasFixedSize(true);
@@ -124,6 +126,7 @@ public class BooksFragment extends Fragment {
     }
 
     private void getData() {
+        showLoadingDialog();
         RequestQueue requestQueue= Volley.newRequestQueue(getContext());
         String url="https://plutoacademy.in/api/books/list?page=1";
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
@@ -156,6 +159,7 @@ public class BooksFragment extends Fragment {
                     }
                     mAdapter = new BooksAdapter(BooksList);
                     mRecyclerView.setAdapter(mAdapter);
+                    hideLoadingDialog();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -218,5 +222,29 @@ public class BooksFragment extends Fragment {
             }
         });
         requestQueue.add(stringRequest);
+    }
+
+    public void showLoadingDialog() {
+
+        LoadingdialogBinding binding = LoadingdialogBinding.inflate(LayoutInflater.from(getActivity()));
+
+        if (dialog != null && dialog.isShowing())
+            return;
+
+        dialog = new Dialog(getActivity(), R.style.LoaderStyle);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(binding.getRoot());
+
+        if (dialog.getWindow() == null)
+            return;
+
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.show();
+    }
+    public void hideLoadingDialog() {
+        if (dialog != null) {
+            dialog.dismiss();
+        }
     }
 }
