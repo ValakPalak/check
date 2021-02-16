@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".BookDescription">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/Back1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_arrow_back_24"
+            app:tint="#666666" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Book Details"
+            android:textAlignment="center"
+            android:textAppearance="@style/title"
+            android:fontFamily="@font/poppins_semibold"
+            android:textStyle="bold"
+            android:layout_marginLeft="50dp"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/activity_horizontal_margin">
+
+            <ImageView
+                android:id="@+id/Bookmark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_bookmark_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="#666666" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <ImageView
+        android:layout_width="211.69dp"
+        android:layout_height="310dp"
+
+        android:scaleType="fitXY"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/bookitem"
+        android:elevation="@dimen/activity_horizontal_margin"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="19dp"/>
+
+    <FrameLayout
+        android:layout_width="221dp"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/BookName"
+            android:layout_width="match_parent"
+            android:textAlignment="center"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/title"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="The Power of your Subconscious Mind"
+            android:textColor="#000000"
+            android:lineHeight="24dp"/>
+    </FrameLayout>
+
+    <TextView
+    android:id="@+id/AuthorName"
+    android:layout_width="match_parent"
+    android:textAlignment="center"
+    android:layout_height="wrap_content"
+        android:textSize="14dp"
+    android:fontFamily="@font/poppins"
+    android:text="Dr. Joseph Murphy"
+    android:textColor="#06070D"
+    android:lineHeight="21dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="14dp"/>
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="4dp"
+        android:layout_gravity="center">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#FFCD82"
+        android:padding="5dp"
+        android:layout_gravity="center">
+
+        <TextView
+            android:id="@+id/BookRec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="100"
+            android:textColor="#000000"
+            android:fontFamily="@font/poppins"
+            android:textSize="14dp"
+            android:layout_marginLeft="3dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+ RECOMMENDERS"
+            android:textColor="#000000"
+            android:fontFamily="@font/poppins"
+            android:layout_marginStart="0dp"
+            android:textSize="14dp"
+            android:layout_marginRight="3dp"/>
+
+    </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+
+
+
+
+</LinearLayout>

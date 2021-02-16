@@ -113,8 +113,6 @@ public class ExpertsFragment extends Fragment {
 
 //        mLayoutManager = new GridLayoutManager(getActivity());
         getData();
-
-
         return view;
     }
 
@@ -139,14 +137,12 @@ public class ExpertsFragment extends Fragment {
                         String name=jsonObject1.getString("name");
                         designation=jsonObject1.getString("designation");
                         ExpertsList.add(new ExpertsModel(image, name, designation));
-
                     }
                     mAdapter = new ExpertsAdapter(ExpertsList);
                     mRecyclerView.setAdapter(mAdapter);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
             }
         }, new Response.ErrorListener() {
             @Override

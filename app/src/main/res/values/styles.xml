@@ -2,4 +2,16 @@
 <resources>
 
     <style name="LoaderStyle">loaderstyle</style>
+    <style name="title">
+
+        <item name="android:textSize">
+            20sp
+        </item>
+
+        <item name="android:textColor">
+            #242933
+        </item>
+
+    </style>
+
 </resources>
