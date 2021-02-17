@@ -175,8 +175,6 @@ public class BooksFragment extends Fragment implements  OnItemClick {
         requestQueue.add(stringRequest);
     }
 
-
-
     private void getDataOnSearch(String book) {
         Toast.makeText(getContext(), ""+book, Toast.LENGTH_SHORT).show();
 
@@ -250,7 +248,7 @@ public class BooksFragment extends Fragment implements  OnItemClick {
     }
 
     @Override
-    public void Onclick(int posiiton) {
+    public void Onclick(int position) {
     startActivity(new Intent(getContext(),BookDescription.class));
     }
 }

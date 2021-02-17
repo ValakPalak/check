@@ -20,7 +20,7 @@
                 android:background="#D9EFFE" />
 
             <com.mikhaellopez.circularimageview.CircularImageView
-                android:id="@+id/image"
+                android:id="@+id/profile_image"
                 android:layout_width="90dp"
                 android:layout_height="90dp"
                 android:layout_marginTop="-45dp"
